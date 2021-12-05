@@ -27,7 +27,6 @@ public class ProductController {
   }
 
   @RequestMapping(value="/add_product", method = RequestMethod.GET)
-  @ResponseBody
   public String addProduct(
           @RequestParam("game_name") String game_name,
           @RequestParam("img_url") String img_url,
@@ -39,12 +38,13 @@ public class ProductController {
   }
 
   @RequestMapping(value="/update_product", method = RequestMethod.GET)
-  @ResponseBody
   public String updateProduct(
       @RequestParam("game_name") String game_name,
-      @RequestParam("price") Integer price
+      @RequestParam("img_url") String img_url,
+      @RequestParam("price") Integer price,
+      @RequestParam("description") String description
   )
   {
-    return productManager.UpdateProduct(game_name, price);
+    return productManager.UpdateProduct(game_name, img_url, price, description);
   }
 }

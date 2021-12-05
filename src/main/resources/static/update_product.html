@@ -71,10 +71,18 @@
         <input type="text" id="game_name_text" aria-label="game_name_text">
     </div>
     <div class="form-group">
+        <label for="ImageURL">Image URL:</label>
+        <input type="text" id="image_url_text">
+    </div>
+    <div class="form-group">
         <label for="Price">Price:</label>
         <input type="text" id="price_text">
     </div>
-    <button class="btn btn-outline-success" type="button" id="add_button">Add</button>
+    <div class="form-group">
+        <label for="Description">Description:</label>
+        <input type="text" id="description_text">
+    </div>
+    <button class="btn btn-outline-success" type="button" id="add_button">Update</button>
 </form>
 <!-- Optional JavaScript; choose one of the two! -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -105,7 +113,9 @@
 
             data: {
                 game_name : $('#game_name_text').val(),
+                img_url : $('#image_url_text').val(),
                 price : $('#price_text').val(),
+                description : $('#description_text').val()
             },
 
             // Whether this is a POST or GET request

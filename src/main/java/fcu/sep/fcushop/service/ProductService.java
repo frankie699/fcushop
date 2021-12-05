@@ -43,7 +43,6 @@ public class ProductService {
     try (Connection connection = sql2oDbHandler.getConnector().open()) {
       String query = "select ID id, NAME name, IMAGE_URL imageUrl, PRICE price, DESCRIPTION description"
           + " from PRODUCT where name like :keyword";
-
       return connection.createQuery(query)
           .addParameter("keyword", "%"+keyword+"%")
           .executeAndFetch(Product.class);
@@ -69,16 +68,18 @@ public class ProductService {
     }
   }
 
-  public String UpdateProduct(String game_name, int price)
+  public String UpdateProduct(String game_name, String img_url, int price, String description)
   {
     try (Connection connection = sql2oDbHandler.getConnector().open()) {
       String query = "Update PRODUCT "
-          + "SET PRICE= :price WHERE NAME = :game_name";
+          + "SET IMAGE_URL= :img_url,PRICE= :price,DESCRIPTION= :description WHERE NAME = :game_name";
 
       System.out.println(query);
       connection.createQuery(query)
           .addParameter("game_name", game_name)
+          .addParameter("img_url", img_url)
           .addParameter("price", price)
+          .addParameter("description", description)
           .executeUpdate();
       return "Success";
 
