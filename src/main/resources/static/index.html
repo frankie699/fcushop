@@ -102,6 +102,7 @@
     $('#searchProduct').click(function() {
       const keyword = $('#productKeyword').val();
       if (keyword.trim() === '') {
+        emptyProducts();
         getProducts('products');
       } else {
         getProducts('products/' + keyword);
